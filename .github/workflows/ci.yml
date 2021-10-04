@@ -8,9 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '3.0.1'
+        uses: actions/setup-ruby
       - run: make install
       - run: make lint
       - run: make test
