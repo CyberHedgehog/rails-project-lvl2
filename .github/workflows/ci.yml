@@ -10,7 +10,7 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
       - name: Install app
-        - run: make install
+        run: make install
       - name: Test and lint
-        - run: make lint
-        - run: make test
+        run: make lint
+        run: make test
