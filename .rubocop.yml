@@ -9,6 +9,7 @@ AllCops:
   - 'db/migrate/**'
   - 'vendor/**/*'
   - 'node_modules/**/*'
+  - 'config/initializers/**'
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
