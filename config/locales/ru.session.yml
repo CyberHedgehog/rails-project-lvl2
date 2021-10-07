@@ -1,0 +1,7 @@
+ru:
+  session:
+    logout: Выйти
+    login: Войти
+    form:
+      title: 'Вход'
+      remember_me: Запомнить меня

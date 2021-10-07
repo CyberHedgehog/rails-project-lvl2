@@ -1,2 +1,5 @@
 ru:
   title: DobroBlog
+  session:
+    logout: Выйти
+    login: Войти
