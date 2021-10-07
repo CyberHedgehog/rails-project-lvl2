@@ -1,0 +1,11 @@
+ru:
+  users:
+    sign_up: Регистрация
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        many: Пользователи
+      attributes:
+        password: Пароль
+        user/email: Почта
