@@ -5,8 +5,9 @@ h2= t 'users.sign_up'
     = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }
     = f.input :password,
       required: true,
+      label: t('users.password'),
       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
       input_html: { autocomplete: "new-password" }
   .form-actions
-    = f.button :submit, "Sign up"
+    = f.button :submit, t('registration.signup'), class: 'btn btn-primary'
 = render "users/shared/links"

@@ -3,3 +3,5 @@ ru:
   session:
     logout: Выйти
     login: Войти
+  registration:
+    signup: 'Зарегистрироваться'
