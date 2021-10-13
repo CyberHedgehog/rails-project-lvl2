@@ -22,9 +22,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_path, params: { post: {
         title: @post.title,
         body: @post.body,
-        post_category_id: @post.post_category.id,
-      }
-    }
+        post_category_id: @post.post_category.id
+      } }
     end
     assert_redirected_to post_path(Post.last)
   end
