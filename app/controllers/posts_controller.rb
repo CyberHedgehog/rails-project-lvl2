@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def show; end
 
   def create
-    if !user_signed_in?
+    unless user_signed_in?
       redirect_to root_path
       return
     end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    redirect_to posts_path if !user_signed_in?
+    redirect_to posts_path unless user_signed_in?
   end
 
   def update
