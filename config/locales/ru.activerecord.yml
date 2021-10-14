@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      post: Пост
+    attributes:
+      post:
+        title: Название
+        body: Содержание
+        post_category: Категория

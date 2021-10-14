@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_categories, only: %i[new edit]
 
   def index
     @posts = Post.order(created_at: :desc)
@@ -57,6 +58,10 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_categories
+    @categories = PostCategory.all
   end
 
   def post_params

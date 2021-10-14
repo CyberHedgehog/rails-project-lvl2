@@ -15,10 +15,13 @@ html
               span.fs-4= t('title')
           .text-end
             ul.nav 
-              li.nav-item 
-                - if user_signed_in? 
+              - if user_signed_in?
+                li.nav-item
+                  = link_to t('posts.new'), new_post_path, class: 'nav-link link-dark px-2'
+                li.nav-item
                   = link_to t('session.logout'),  destroy_user_session_path, method: :delete, class: 'nav-link link-dark px-2'
-                - else
+              - else
+                li.nav-item
                   = link_to t('session.login'),  new_user_session_path, class: 'nav-link link-dark px-2'
 
         = yield
