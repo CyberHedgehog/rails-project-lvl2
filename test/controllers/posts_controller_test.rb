@@ -17,6 +17,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # test 'should redirect if unauthorized' do
+  # end
+
+  # test 'should not create post if unauthorized' do
+  # end
+
   test 'should create post' do
     assert_difference('Post.count') do
       post posts_path, params: { post: {
@@ -26,5 +32,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       } }
     end
     assert_redirected_to post_path(Post.last)
+  end
+
+  test 'should update post' do
+    put post_path(@post), params: { post: {
+      title: @post.title,
+      body: 'New body',
+      post_category_id: @post.post_category_id
+    } }
+    assert_redirected_to post_path(@post)
+    assert Post.find(@post.id).body, 'New body'
   end
 end
