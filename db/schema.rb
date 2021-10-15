@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_112508) do
+ActiveRecord::Schema.define(version: 2021_10_15_130215) do
 
   create_table "post_categories", force: :cascade do |t|
     t.string "name"
@@ -20,11 +20,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_112508) do
 
   create_table "post_comments", force: :cascade do |t|
     t.text "content"
+    t.integer "post_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_post_comments_on_ancestry"
+    t.index ["post_id"], name: "index_post_comments_on_post_id"
     t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_112508) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "post_comments", "posts"
   add_foreign_key "post_comments", "users"
   add_foreign_key "posts", "post_categories"
   add_foreign_key "posts", "users"
