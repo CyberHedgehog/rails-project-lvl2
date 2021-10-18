@@ -14,7 +14,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comment = PostComment.new
+  end
 
   def create
     unless user_signed_in?

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :post_comments
   # resources :post_comments
   root 'posts#index'
   resources :posts do
     scope module: :posts do
-      resources :comments, only: %i[new]
+      resources :comments, only: %i[create]
     end
   end
 
