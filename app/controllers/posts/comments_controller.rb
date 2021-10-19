@@ -7,7 +7,8 @@ class Posts::CommentsController < ApplicationController
     @comment = PostComment.new(
       content: comment_params[:content],
       user_id: current_user[:id],
-      post_id: params[:post_id]
+      post_id: params[:post_id],
+      parent_id: params[:parent_id],
     )
     if @comment.save
       redirect_to post_path(params[:post_id])
@@ -19,6 +20,6 @@ class Posts::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:post_comment).permit(:content)
+    params.require(:post_comment).permit(:content, :parent_id)
   end
 end
