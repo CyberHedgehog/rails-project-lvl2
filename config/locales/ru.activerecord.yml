@@ -1,9 +1,18 @@
 ru:
   activerecord:
     models:
-      post: Пост
+      post:
+        one: Пост
+        few: Постов
+        other: Посты
+      post_comment:
+        one: Комментарий
+        few: Комментариев
+        other: Комментарии
     attributes:
       post:
         title: Название
         body: Содержание
         post_category: Категория
+      post_comment:
+        content: Комментарий
