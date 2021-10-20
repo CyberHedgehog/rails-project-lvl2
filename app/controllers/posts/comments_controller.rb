@@ -4,12 +4,7 @@ class Posts::CommentsController < ApplicationController
       redirect_to root_path
       return
     end
-    @comment = PostComment.new(
-      content: comment_params[:content],
-      user_id: current_user[:id],
-      post_id: params[:post_id],
-      parent_id: comment_params[:parent_id],
-    )
+    @comment = PostComment.new(comment_params.merge(user_id: current_user[:id], post_id: params[:post_id]))
     if @comment.save
       redirect_to post_path(params[:post_id])
     else
