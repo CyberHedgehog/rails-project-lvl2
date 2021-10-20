@@ -1,0 +1,15 @@
+  .card.mb-4.mt-4
+    .card-header.small.mb-2.d-flex
+      div id="comment-#{comment.id}"
+        span.mx-2= comment.user.email
+        span.mx-2= comment.created_at.strftime("%d-%m-%Y, %H:%M")
+    .card-body.d-flex
+      .w-100
+        .mb-3= comment.content
+    hr.my-2
+    .mb-2.m-4
+      a class="text-muted" data-bs-toggle="collapse" href="#new_post_comment-#{comment.id}" aria-expanded="true" aria-controls="new_post_comment-#{comment.id}"= 'Ответить'
+      div id="new_post_comment-#{comment.id}" class="collapse" data-bs-target="new_post_comment-#{comment.id}"
+        = render 'posts/comments/form', comment: comment.children.new, parent_id: comment.id, url: post_comments_url(@post)
+      - comment.children.each do |child_comment|
+        = render 'posts/comments/comment', comment: child_comment

@@ -8,7 +8,7 @@ class Posts::CommentsController < ApplicationController
       content: comment_params[:content],
       user_id: current_user[:id],
       post_id: params[:post_id],
-      parent_id: params[:parent_id],
+      parent_id: comment_params[:parent_id],
     )
     if @comment.save
       redirect_to post_path(params[:post_id])
