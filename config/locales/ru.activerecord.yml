@@ -9,10 +9,15 @@ ru:
         one: Комментарий
         few: Комментариев
         other: Комментарии
+      post_category:
+        one: Категория
+        few: Категорий
+        other: Категории
     attributes:
       post:
         title: Название
         body: Содержание
-        post_category: Категория
+        post_category_id: Категория
       post_comment:
         content: Комментарий
+        
