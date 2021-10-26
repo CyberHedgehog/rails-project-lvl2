@@ -22,10 +22,10 @@ class PostLikesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@post)
   end
 
-  # test 'should not like if unauthorised' do
-  #   sign_out :user
-  #   assert_no_difference('PostLike.count') do
-  #     post post_likes_path(@post)
-  #   end
-  # end
+  test 'should not like if unauthorised' do
+    sign_out :user
+    assert_no_difference('PostLike.count') do
+      post post_likes_path(@post)
+    end
+  end
 end
