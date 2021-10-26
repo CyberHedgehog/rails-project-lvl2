@@ -72,18 +72,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@post)
     assert Post.find(@post.id).body, 'New body'
   end
-
-  # test 'should not destroy post' do
-  #   sign_out :user
-  #   assert_no_difference('Post.count') do
-  #     delete post_path(@post)
-  #   end
-  # end
-
-  # test 'should destroy post' do
-  #   assert_difference('Post.count', -1) do
-  #     delete post_path(@post)
-  #   end
-  #   assert_redirected_to posts_path
-  # end
 end
