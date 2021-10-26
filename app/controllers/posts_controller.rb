@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       redirect_to root_path
       return
     end
-    @post = Post.new(user_id: current_user.id, **post_params)
+    @post = Post.new(creator_id: current_user.id, **post_params)
     if @post.save
       redirect_to post_path(@post)
     else
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.user != current_user
+    if @post.creator != current_user
       render :edit
       return
     end
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.user != current_user
+    if @post.creator != current_user
       redirect_to posts_path
       return
     end

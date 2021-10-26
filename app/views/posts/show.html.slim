@@ -3,7 +3,7 @@ p= @post.body
 
 .mt-3.mb-3.d-flex
     .me-auto
-        span= @post.user.email
+        span= @post.creator.email
         span.mx-2= @post.created_at.strftime("%d-%m-%Y, %H:%M")
     div
         span.me-2= @post.likes.count 
