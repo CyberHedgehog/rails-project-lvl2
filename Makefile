@@ -2,6 +2,9 @@ install:
 	bundle install
 	yarn install
 
+migrate:
+	bin/rails db:migrate
+
 test:
 	bin/rails test
 
