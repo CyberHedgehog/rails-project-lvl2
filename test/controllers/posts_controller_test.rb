@@ -22,6 +22,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should show' do
+    sign_out :user
+    get post_path(@post)
+    assert_response :success
+  end
+
   test 'should not create post if unauthorized' do
     sign_out :user
     assert_no_difference('Post.count') do

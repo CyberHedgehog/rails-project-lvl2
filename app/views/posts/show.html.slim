@@ -7,7 +7,7 @@ p= @post.body
         span.mx-2= @post.created_at.strftime("%d-%m-%Y, %H:%M")
     div
         span.me-2= @post.likes.count 
-        - if @post.likes.detect { |like| like.user_id == current_user.id }
+        - if @current_user_like
             = link_to post_like_path(@post), method: :delete do
                 i.bi.bi-hand-thumbs-up-fill.text-reset
         - else
