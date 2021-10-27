@@ -22,14 +22,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should redirect if unauthorized' do
-    sign_out :user
-    get new_post_path
-    assert_redirected_to posts_path
-    get edit_post_path(@post)
-    assert_redirected_to posts_path
-  end
-
   test 'should not create post if unauthorized' do
     sign_out :user
     assert_no_difference('Post.count') do

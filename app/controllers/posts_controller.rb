@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :set_categories, only: %i[new edit]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @posts = Post.order(created_at: :desc)
@@ -19,11 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    unless user_signed_in?
-      redirect_to root_path
-      return
-    end
-    @post = Post.new(creator_id: current_user.id, **post_params)
+    @post = Post.new(creator: current_user, **post_params)
     if @post.save
       redirect_to post_path(@post)
     else
