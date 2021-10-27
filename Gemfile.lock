@@ -119,6 +119,9 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.1)
     minitest (5.14.4)
+    minitest-power_assert (0.3.1)
+      minitest
+      power_assert (>= 1.1)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
@@ -129,6 +132,7 @@ GEM
       ast (~> 2.4.1)
     pg (1.2.3)
     popper_js (2.9.3)
+    power_assert (2.0.1)
     public_suffix (4.0.6)
     puma (5.5.0)
       nio4r (~> 2.0)
@@ -274,6 +278,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
+  minitest-power_assert
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
