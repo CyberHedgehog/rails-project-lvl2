@@ -1,5 +1,5 @@
 doctype html
-html
+html.h-100
   head
     title= t 'title'
     meta[name="viewport" content="width=device-width,initial-scale=1"]
@@ -7,21 +7,11 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    main
+  body.d-flex.flex-column.h-100
+    = render 'layouts/shared/header'
+    main.flex-shrink-0
       .container
-        header class='d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom'
-          = link_to(root_path, class: 'd-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none') do
-              span.fs-4= t('title')
-          .text-end
-            ul.nav 
-              - if user_signed_in?
-                li.nav-item
-                  = link_to t('posts.new'), new_post_path, class: 'nav-link link-dark px-2'
-                li.nav-item
-                  = link_to t('session.logout'),  destroy_user_session_path, method: :delete, class: 'nav-link link-dark px-2'
-              - else
-                li.nav-item
-                  = link_to t('session.login'),  new_user_session_path, class: 'nav-link link-dark px-2'
-
         = yield
+    footer.footer.mt-auto.py-3.bg-light
+      .container 
+        span.text-muted Footer

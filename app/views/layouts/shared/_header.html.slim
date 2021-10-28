@@ -1,0 +1,18 @@
+header
+  nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    .container-fluid 
+      = link_to t('title'), root_path, class: 'navbar-brand'
+      button.navbar-toggler.collapsed type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse id="navbarCollapse"
+        ul.navbar-nav.ms-auto.mb-2.mb-md-0
+          - if current_user
+              li.nav-item
+                = link_to t('posts.new'), new_post_path, class: 'nav-link active'
+              li.nav-item
+                = link_to t('session.logout'), destroy_user_session_path, method: :delete, class: 'nav-link active'
+          - else
+              li.nav-item
+                = link_to t('session.login'), new_user_session_path, class: 'nav-link active'
+                li.nav-item
+                = link_to t('registration.signup'), new_user_registration_path, class: 'nav-link active'
