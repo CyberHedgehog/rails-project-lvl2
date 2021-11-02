@@ -10,6 +10,9 @@ p= @post.body
         - if @current_user_like
             = link_to post_like_path(@post), method: :delete do
                 i.bi.bi-hand-thumbs-up-fill.text-reset
+        - elsif !@current_user
+            = link_to post_likes_path(@post), method: :post do
+                i.bi.bi-hand-thumbs-up.text-reset data-toggle="tooltip" data-placement="bottom" title= t('likes.tooltip')
         - else
             = link_to post_likes_path(@post), method: :post do
                 i.bi.bi-hand-thumbs-up.text-reset

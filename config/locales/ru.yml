@@ -5,3 +5,5 @@ ru:
     login: Войти
   registration:
     signup: 'Зарегистрироваться'
+  likes:
+    tooltip: Нужно войти, чтобы поставить лайк
