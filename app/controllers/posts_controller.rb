@@ -8,11 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
-      @post = Post.new
-    else
-      redirect_to posts_path
-    end
+    @post = Post.new
   end
 
   def show
@@ -29,9 +25,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    redirect_to posts_path unless user_signed_in?
-  end
+  def edit; end
 
   def update
     if @post.creator != current_user
