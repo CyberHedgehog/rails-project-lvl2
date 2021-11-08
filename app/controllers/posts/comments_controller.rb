@@ -9,6 +9,7 @@ class Posts::CommentsController < ApplicationController
       redirect_to post_path(params[:post_id])
     else
       render :new
+      # TODO: Выяснить, что рендерить, если комент не прошел валидацию
     end
   end
 

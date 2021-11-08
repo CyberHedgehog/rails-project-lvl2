@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_categories, only: %i[new edit]
+  before_action :set_categories, only: %i[new edit create]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
