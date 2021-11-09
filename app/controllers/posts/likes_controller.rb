@@ -6,7 +6,7 @@ class Posts::LikesController < ApplicationController
   end
 
   def destroy
-    like = PostLike.where(user_id: current_user.id, post_id: params[:post_id]).first
+    like = PostLike.find_by(user_id: current_user.id, post_id: params[:post_id])
     like.destroy
     redirect_to post_path(params[:post_id])
   end
