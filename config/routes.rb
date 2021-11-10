@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :post_categories, only: :index
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
+    registrations: 'devise/registrations',
+    sessions: 'devise/sessions'
   }
 end

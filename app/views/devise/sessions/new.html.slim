@@ -6,4 +6,4 @@ h2= t('session.form.title')
     = f.input :remember_me, label: t('session.form.remember_me'), as: :boolean if devise_mapping.rememberable?
   .form-actions
     = f.button :submit, t('session.login'), class: 'btn btn-primary'
-= render "users/shared/links"
+= render "devise/shared/links"
