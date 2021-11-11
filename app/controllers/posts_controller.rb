@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_categories, only: %i[new edit create]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
@@ -8,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    set_categories
     @post = Post.new
   end
 
@@ -25,7 +25,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    set_categories
+  end
 
   def update
     if @post.creator != current_user
