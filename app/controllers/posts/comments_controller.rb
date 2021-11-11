@@ -5,8 +5,8 @@ class Posts::CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(params[:post_id])
     else
-      render :new
-      # TODO: Выяснить, что рендерить, если комент не прошел валидацию
+      @post = Post.find(params[:post_id])
+      render 'posts/show'
     end
   end
 
