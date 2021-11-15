@@ -1,0 +1,18 @@
+ru:
+  devise:
+    failure:
+      already_authenticated: "Вы уже вошли."
+      invalid: "Неправильные %{authentication_keys} или пароль."
+      not_found_in_database: "Непральные %{authentication_keys} или пароль."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "Для продолжения необходимо войти или зарегистрироваться."
+    registrations:
+      destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+      signed_up: "Успешная регистрация!"
+    sessions:
+      signed_in: "Успешный вход"
+      signed_out: "Успешный выход"
+      already_signed_out: "Вы уже вышли."
+  errors:
+    messages:
+      not_found: "не найден"
