@@ -1,4 +1,12 @@
 class PostPolicy < ApplicationPolicy
+  attr_reader :user, :post
+
+  def initialize(user, post)
+    super
+    @user = user
+    @post = post
+  end
+
   def index?
     true
   end
@@ -8,16 +16,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    return true if user.present? && user == post.user
+    return true if @user.present? && @user == @post.creator
   end
 
   def destroy?
     return true if user.present? && user == post.user
-  end
-
-  private
-
-  def post
-    record
   end
 end
