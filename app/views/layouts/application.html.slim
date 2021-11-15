@@ -11,6 +11,7 @@ html.h-100
     = render 'layouts/shared/header'
     main.flex-shrink-0
       .container
+        = render 'layouts/shared/flash' unless flash.empty?
         = yield
     footer.footer.mt-auto.py-3.bg-light
       .container 
