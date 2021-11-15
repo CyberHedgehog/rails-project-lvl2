@@ -12,7 +12,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    @user.present?
   end
 
   def update?
