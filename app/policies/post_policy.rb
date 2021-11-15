@@ -20,6 +20,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return true if user.present? && user == post.user
+    return true if @user.present? && @user == @post.creator
   end
 end
