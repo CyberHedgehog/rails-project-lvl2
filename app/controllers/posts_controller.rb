@@ -30,10 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.creator != current_user
-      render :edit
-      return
-    end
+    authorize @post
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -42,10 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.creator != current_user
-      redirect_to posts_path
-      return
-    end
+    authorize @post
     @post.destroy
     redirect_to posts_url
   end
