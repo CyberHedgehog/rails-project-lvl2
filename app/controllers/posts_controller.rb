@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    set_categories
     @post = Post.new
   end
 
@@ -25,9 +24,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    set_categories
-  end
+  def edit; end
 
   def update
     authorize @post
@@ -48,10 +45,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_categories
-    @categories = PostCategory.all
   end
 
   def post_params
