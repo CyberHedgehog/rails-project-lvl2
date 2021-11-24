@@ -4,9 +4,9 @@ class Posts::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(user_id: current_user.id, **comment_params)
     if @comment.save
-      redirect_to post_path(params[:post_id])
+      redirect_to post_path(@post)
     else
-      render 'posts/show'
+      redirect_to post_path(@post), alert: @comment.errors.full_messages.first
     end
   end
 
