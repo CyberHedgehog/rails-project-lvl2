@@ -13,6 +13,7 @@ console:
 
 lint:
 	rubocop
+	slim-lint app/views
 
 start:
 	bin/rails s
