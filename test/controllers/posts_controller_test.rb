@@ -6,7 +6,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
     @post = posts(:one)
-    sign_in users(:one)
+    @user = users(:one)
+    @post_category = post_categories(:one)
+    @title = Faker::Lorem.sentence
+    @body = Faker::Lorem.sentences.join(' ')
+    sign_in @user
   end
 
   test 'should get index' do
@@ -32,23 +36,24 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not create post if unauthorized' do
     sign_out :user
-    assert_no_difference('Post.count') do
-      post posts_path, params: { post: {
-        title: @post.title,
-        body: @post.body,
-        post_category_id: @post.post_category.id
-      } }
-    end
+    post posts_path, params: { post: {
+      title: @title,
+      body: @body,
+      post_category_id: @post_category.id
+    } }
+    new_post = Post.find_by(title: @title)
+    assert_not new_post
+    assert_redirected_to new_user_session_path
   end
 
   test 'should create post' do
-    assert_difference('Post.count') do
-      post posts_path, params: { post: {
-        title: @post.title,
-        body: @post.body,
-        post_category_id: @post.post_category.id
-      } }
-    end
+    post posts_path, params: { post: {
+      title: @title,
+      body: @body,
+      post_category_id: @post_category.id
+    } }
+    new_post = Post.find_by(title: @title)
+    assert new_post
     assert_redirected_to post_path(Post.last)
   end
 
@@ -61,15 +66,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post_category_id: @post.post_category_id
     } }
     assert Post.find(@post.id).body, old_body_value
+    assert_redirected_to new_user_session_path
   end
 
   test 'should update post' do
     put post_path(@post), params: { post: {
       title: @post.title,
-      body: 'New body',
+      body: @body,
       post_category_id: @post.post_category_id
     } }
     assert_redirected_to post_path(@post)
-    assert Post.find(@post.id).body, 'New body'
+    assert Post.find(@post.id).body, @body
   end
 end
