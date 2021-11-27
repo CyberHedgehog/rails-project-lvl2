@@ -5,29 +5,36 @@ require 'test_helper'
 class PostLikesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
-    @post = posts(:one)
-    sign_in users(:one)
+    @post_one = posts(:one)
+    @post_two = posts(:two)
+    @user = users(:one)
+    sign_in @user
     @like = post_likes(:one)
   end
 
   test 'should like post' do
-    assert_difference('PostLike.count') do
-      post post_likes_path(@post)
-    end
-    assert_redirected_to post_path(@post)
+    post_like = PostLike.find_by(user_id: @user.id, post_id: @post_two.id)
+    assert_not post_like
+    post post_likes_path(@post_two)
+    post_like = PostLike.find_by(user_id: @user.id, post_id: @post_two.id)
+    assert post_like
+    assert_redirected_to post_path(@post_two)
   end
 
   test 'should unlike post' do
-    assert_difference('PostLike.count', -1) do
-      delete post_like_path(post_id: @post.id, id: @like.id)
-    end
-    assert_redirected_to post_path(@post)
+    post_like = PostLike.find_by(user_id: @user.id, post_id: @post_one.id)
+    assert post_like
+    delete post_like_path(post_id: @post_one.id, id: @like.id)
+    post_like = PostLike.find_by(user_id: @user.id, post_id: @post_one.id)
+    assert_not post_like
+    assert_redirected_to post_path(@post_one)
   end
 
   test 'should not like if unauthorised' do
     sign_out :user
-    assert_no_difference('PostLike.count') do
-      post post_likes_path(@post)
-    end
+    last_like = @post_one.likes.last
+    post post_likes_path(@post_one)
+    assert_equal last_like, @post_one.likes.last
+    assert_redirected_to new_user_session_path
   end
 end
